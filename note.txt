@@ -1,0 +1,3 @@
+//Installation taiwindcss
+composer require symfonycasts/tailwind-bundle
+ php bin/console tailwind:init
