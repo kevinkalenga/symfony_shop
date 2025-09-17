@@ -1,3 +1,7 @@
 //Installation taiwindcss
 composer require symfonycasts/tailwind-bundle
  php bin/console tailwind:init
+
+//Une fois que le controleur est crée
+php bin/console tailwind:build
+php bin/console cache:clear
