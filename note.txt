@@ -5,3 +5,6 @@ composer require symfonycasts/tailwind-bundle
 //Une fois que le controleur est crée
 php bin/console tailwind:build(en dev: php bin/console tailwind:build --watch)
 php bin/console cache:clear
+
+///////////////////////////////////////////////////////////////////
+

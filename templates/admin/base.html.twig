@@ -5,6 +5,7 @@
         <title>{% block title %}Admin Dashboard{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+            {# <link rel="stylesheet" href="{{ asset('build/tailwind/app.css') }}"> #}
         {% endblock %}
 
         {% block javascripts %}
@@ -33,6 +34,35 @@
             </div>
            
        </div>
+       <!-- Image preview script -->
+       <script>
+          function previewImage(input) {
+            const file = input.files[0]
+            const preview = document.getElementById('imagePreview')
+            const message = document.getElementById('previewMessage')
+
+            preview.classList.add('hidden')
+            message.classList.add('hidden')
+            message.textContext = '' 
+
+            if(file) {
+              const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+              if(!allowedTypes.includes(file.type)) {
+                message.textContext = "Please select a valid image file (JPEG, PNG, GIF, or Webp)."
+                message.classList.remove('hidden')
+                input.value = ''
+                return
+              }
+
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden')
+              }
+              reader.readAsDataURL(file)
+            }
+          }
+       </script>
      
     </body>
 </html>
